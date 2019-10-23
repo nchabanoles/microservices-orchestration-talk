@@ -1,7 +1,7 @@
 {
-  "name": "PaymentService",
+  "name": "ShipmentService",
   "version": "1.0.0",
-  "description": "Ask customer to pay for the new order.",
+  "description": "Send the goods for payed order.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

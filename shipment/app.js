@@ -29,23 +29,23 @@ producer.on('ready', async function() {
       );
 
     consumer.on('message', async function(message) {
-        console.log(`[${kafka_topic_subscription} -> Payment Service]: Requiring payment for : ${message.value}`);
+        console.log(`[${kafka_topic_subscription} -> Shipment Service]: Need to send goods after order payment: ${message.value}`);
         const orderID = JSON.parse(message.value).id;
 
          let payloads = [
            {
              topic: kafka_topic,
-             messages: `{"name": "Payment received for order", "id": "${orderID}" }`
+             messages: `{"name": "Shipment sent", "id": "${orderID}" }`
            }
          ];
 
-         // Process payment
+         // Process shipment
 
          producer.send(payloads, (err, data) => {
               if (err) {
-                console.log(`[Payment Service -> ${kafka_topic}]: broker update failed`);
+                console.log(`[Shipment Service -> ${kafka_topic}]: broker update failed`);
               } else {
-                console.log(`[Payment Service -> ${kafka_topic}]: Payment received for order: ${orderID}`);
+                console.log(`[Shipment Service -> ${kafka_topic}]: Shipment sent for order: ${orderID}`);
               }
          });
 
@@ -57,5 +57,5 @@ producer.on('ready', async function() {
 });
 
 producer.on('error', function(err) {
-   console.log(`[Order Service -> ${kafka_topic}]: connection error, terminating program.`, err);
+   console.log(`[Shipment Service -> ${kafka_topic}]: connection error, terminating program.`, err);
 });
