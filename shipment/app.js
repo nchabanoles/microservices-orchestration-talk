@@ -57,5 +57,5 @@ producer.on('ready', async function() {
 });
 
 producer.on('error', function(err) {
-   console.log(`[Payment Service -> ${kafka_topic}]: connection error, terminating program.`, err);
+   console.log(`[Order Service -> ${kafka_topic}]: connection error, terminating program.`, err);
 });
