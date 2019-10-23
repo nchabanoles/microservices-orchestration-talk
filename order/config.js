@@ -1,4 +1,4 @@
 module.exports = {
-	kafka_topic: 'shipment',
+	kafka_topic: 'orders',
 	kafka_server: 'localhost:9092',
 };
