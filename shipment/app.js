@@ -40,15 +40,19 @@ producer.on('ready', async function() {
          ];
 
          // Process shipment
-
-         producer.send(payloads, (err, data) => {
+        console.log(`[Shipment Service]: Packaging goods for order : ${message.value}...`);
+         setTimeout(function(){
+            console.log(`[Shipment Service]: ... still working on order : ${message.value}...`);
+         },5000)
+         setTimeout(function(){
+            producer.send(payloads, (err, data) => {
               if (err) {
                 console.log(`[Shipment Service -> ${kafka_topic}]: broker update failed`);
               } else {
                 console.log(`[Shipment Service -> ${kafka_topic}]: Shipment sent for order: ${orderID}`);
               }
-         });
-
+            });
+         },10000)
 
     })
     consumer.on('error', function(err) {

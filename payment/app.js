@@ -40,15 +40,19 @@ producer.on('ready', async function() {
          ];
 
          // Process payment
-
-         producer.send(payloads, (err, data) => {
-              if (err) {
-                console.log(`[Payment Service -> ${kafka_topic}]: broker update failed`);
-              } else {
-                console.log(`[Payment Service -> ${kafka_topic}]: Payment received for order: ${orderID}`);
-              }
-         });
-
+         console.log(`[Payment Service]: Processing customer payment for : ${message.value}...`);
+         setTimeout(function(){
+            console.log(`[Payment Service]: ... still processing  payment for : ${message.value}...`);
+         },5000)
+         setTimeout(function(){
+            producer.send(payloads, (err, data) => {
+                  if (err) {
+                    console.log(`[Payment Service -> ${kafka_topic}]: broker update failed`);
+                  } else {
+                    console.log(`[Payment Service -> ${kafka_topic}]: Payment received for order: ${orderID}`);
+                  }
+             });
+         },10000)
 
     })
     consumer.on('error', function(err) {
