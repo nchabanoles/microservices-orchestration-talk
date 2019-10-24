@@ -27,14 +27,14 @@ dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:27.0.1-jre'
 
-    // Use the latest Groovy version for Spock testing
-    testImplementation 'org.codehaus.groovy:groovy-all:2.5.4'
-
-    // Use the awesome Spock testing and specification framework even with Java
-    testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
+    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.0.RELEASE'
+    testImplementation 'org.springframework.kafka:spring-kafka-test:2.3.1.RELEASE'
     testImplementation 'junit:junit:4.12'
 
+    compile 'org.springframework.boot:spring-boot-starter:2.1.0.RELEASE'
     compile 'org.springframework.kafka:spring-kafka:2.3.1.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
 
 
 }

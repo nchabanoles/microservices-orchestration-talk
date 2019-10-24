@@ -3,19 +3,12 @@
  */
 package bonita.kafka.watcher;
 
-import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
-
-    @KafkaListener(topics = "orders", groupId = "")
-    public void listen(String message) {
-        System.out.println("Received Message in group foo: " + message);
+        SpringApplication.run(App.class, args);
     }
 }
