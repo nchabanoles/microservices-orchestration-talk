@@ -1,6 +1,8 @@
 package bonita.kafka.watcher;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.bonitasoft.engine.api.APIClient;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,4 +60,5 @@ public class ReceiverConfig {
     public Receiver receiver() {
         return new Receiver();
     }
+
 }

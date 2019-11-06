@@ -21,6 +21,7 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenLocal()
 }
 
 dependencies {
@@ -35,7 +36,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter:2.1.0.RELEASE'
     compile 'org.springframework.kafka:spring-kafka:2.3.1.RELEASE'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
-
+    compile 'com.bonitasoft.engine:bonita-client-sp:7.10.0.beta-02'
+    compile 'org.json:json:20190722'
 
 }
 
