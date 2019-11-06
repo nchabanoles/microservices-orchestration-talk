@@ -15,7 +15,7 @@ public class Receiver {
         return latch;
     }
 
-    @KafkaListener(topics = "orders")
+    @KafkaListener(topics = "#{'${kafka.consumer.topics}'.split(',')}")
     public void receive(String payload) {
         LOGGER.info("received payload='{}'", payload);
         latch.countDown();

@@ -20,19 +20,21 @@ public class ReceiverConfig {
     @Value("${kafka.bootstrap-servers}")
     private String bootstrapServers;
 
+    @Value("${kafka.consumer.group-id}")
+    private String kafkaConsumerGroupId;
+
     @Bean
     public Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();
-        // list of host:port pairs used for establishing the initial connections to the Kafka cluster
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class);
-        // allows a pool of processes to divide the work of consuming and processing records
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "bonita-kafka");
-        // automatically reset the offset to the earliest offset
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConsumerGroupId);
+        // consume records already sent from the earliest
+        // (instead of consuming future records only)
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         return props;

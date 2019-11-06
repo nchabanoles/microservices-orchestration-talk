@@ -1,2 +1,5 @@
 kafka:
   bootstrap-servers: localhost:9092
+  consumer:
+    group-id: bonita-kafka
+    topics: orders,payments,shipments
