@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +43,12 @@ public class BPMMessagePublisher {
             messageContent.put(idKey, orderId);
             messageContent.put(timestampKey,buildNowExpression());
             Map<Expression, Expression> correlations = buildCorrelationsFrom(messageName,orderId);
-            apiClient.getProcessAPI().sendMessage(messageName, targetProcess, targetFlowNode, messageContent);
+            if(correlations!=null) {
+                apiClient.getProcessAPI().sendMessage(messageName, targetProcess, targetFlowNode, messageContent, correlations);
+            } else {
+                apiClient.getProcessAPI().sendMessage(messageName, targetProcess, targetFlowNode, messageContent);
+            }
+            LOGGER.info(MessageFormat.format("Message \"{0}\" sent to process \"{1}\" (flownode: \"{2}\") (restricted to \"{4}\") with content: \"{3}\"",messageName, targetProcess.getContent(), targetFlowNode.getContent(),messageContent,correlations));
 
             apiClient.logout();
             return true;
