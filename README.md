@@ -14,10 +14,12 @@ Create a container named kafka
 - from wurstmeister/kafka:latest (version 2.3.0 at the time of writing)
 - manually expose port localhost:9092 toward 9092
 - set env variables 
-    - KAFKA_ADVERTISED_HOST_NAME : localhost
+    - KAFKA_ADVERTISED_HOST_NAME : kafka
     - KAFKA_ZOOKEEPER_CONNECT : zookeeper:2181
 - make sure to expose all ports
 - select network orders-microservices
+
+_*Attention:*_ 'kafka' is a dns that can be resolved by other docker containers in the orders-microservices network. If you want to contact kafka from the host, make sure to add an entry in your /etc/hosts to point to the IP address assigned to the container, e.g. 172.23.0.3
 
 ### Start containers
 Kafka and Zookeeper start automatically when their container starts.
