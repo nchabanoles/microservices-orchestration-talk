@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/710Beta/BonitaStudioSubscription-7.10.0.beta-02/workspace/MicroService Orchestration - Order Process Example" vcs="Git" />
   </component>
 </project>

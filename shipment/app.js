@@ -8,7 +8,7 @@ const config = require('./config');
 **/
 const Producer = kafka.Producer;
 const kafka_topic = config.kafka_topic;
-const producer = new Producer(new kafka.KafkaClient(config.kafka_server));
+const producer = new Producer(new kafka.KafkaClient({"kafkaHost":config.kafka_server}));
 
 producer.on('ready', async function() {
     /**
@@ -17,7 +17,7 @@ producer.on('ready', async function() {
       const Consumer = kafka.Consumer;
       const kafka_topic_subscription = config.kafka_topic_subscription;
       let consumer = new Consumer(
-        new kafka.KafkaClient(config.kafka_server),
+        new kafka.KafkaClient({"kafkaHost":config.kafka_server}),
         [{ topic: kafka_topic_subscription, partition: 0 }],
         {
           autoCommit: true,

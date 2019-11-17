@@ -52,7 +52,7 @@ public class ReceiverConfig {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
-
+        factory.setMissingTopicsFatal(false);
         return factory;
     }
 

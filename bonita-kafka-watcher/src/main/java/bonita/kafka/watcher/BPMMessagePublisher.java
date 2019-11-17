@@ -17,24 +17,32 @@ import java.util.Map;
 
 public class BPMMessagePublisher {
 
-    static {
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(BPMMessagePublisher.class);
+
+    private final String targetProcessName;
+    private String bonitaUsername;
+    private String bonitaPassword;
+
+
+    public BPMMessagePublisher(String bonitaServerURL, String targetProcessName, String username, String password) {
+        this.targetProcessName = targetProcessName;
+        this.bonitaUsername = username;
+        bonitaPassword = password;
         HashMap<String, String> parameters = new HashMap<>();
-        parameters.put("server.url", "http://localhost:8080");
+        parameters.put("server.url", bonitaServerURL);
         parameters.put("application.name", "bonita");
         parameters.put("connections.max", "5");
         APITypeManager.setAPITypeAndParams(ApiAccessType.HTTP, parameters);
     }
 
-    private static final Logger LOGGER =
-            LoggerFactory.getLogger(BPMMessagePublisher.class);
-
     public boolean sendBPMMessageFromPayload(String payload) {
         APIClient apiClient = new APIClient();
         try {
-            apiClient.login(1, "walter.bates", "bpm");
+            apiClient.login(1, bonitaUsername, bonitaPassword);
 
             String messageName = buildMessageNameFromPayload(payload);
-            Expression targetProcess = new ExpressionBuilder().createConstantStringExpression("New Order");
+            Expression targetProcess = new ExpressionBuilder().createConstantStringExpression(targetProcessName);
             Expression targetFlowNode = buildFlowNodeNameExpressionFrom(messageName);
             Expression idKey = new ExpressionBuilder().createConstantStringExpression("id");
             Expression timestampKey = new ExpressionBuilder().createConstantStringExpression("timestamp");
@@ -70,6 +78,7 @@ public class BPMMessagePublisher {
             return null;
         }
         return result;
+
     }
 
     private String buildMessageNameFromPayload(String payload) {

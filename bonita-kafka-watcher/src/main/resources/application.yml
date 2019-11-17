@@ -1,5 +1,12 @@
 kafka:
-  bootstrap-servers: localhost:9092
+  bootstrap-servers: kafka:9092
   consumer:
-    group-id: bonita-kafka
+    group-id: kafka-bonita-monitoring
     topics: orders,payments,shipments
+bonita:
+  server:
+    url: http://172.23.0.1:8080
+    username: walter.bates
+    password: bpm
+  target-process:
+    name: New Order

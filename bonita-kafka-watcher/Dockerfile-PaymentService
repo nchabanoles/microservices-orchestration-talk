@@ -1,0 +1,8 @@
+FROM openjdk
+
+MAINTAINER Nicolas Chabanoles @ Bonitasoft
+
+ADD ./build/distributions/bonita-kafka-watcher.tar /payment-service/
+
+
+CMD /payment-service/bonita-kafka-watcher/bin/bonita-kafka-watcher --kafka.consumer.group-id=bonita-payments-service --kafka.consumer.topics=orders --bonita.target-process.name=PaymentService

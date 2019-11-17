@@ -1,0 +1,8 @@
+FROM openjdk
+
+MAINTAINER Nicolas Chabanoles @ Bonitasoft
+
+ADD ./build/distributions/bonita-kafka-watcher.tar /kafka-bonita-monitoring/
+
+
+CMD /kafka-bonita-monitoring/bonita-kafka-watcher/bin/bonita-kafka-watcher

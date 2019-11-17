@@ -20,7 +20,7 @@ producer.on('ready', async function() {
   console.log(`Order Service ready, pushing payloads to Kafka server: ${client.options.kafkaHost}`);
   producer.send(payloads, (err, data) => {
     if (err) {
-      console.log(`[Order Service -> ${kafka_topic}]: broker update failed`);
+      console.log(`[Order Service -> ${kafka_topic}]: broker update failed`, err);
     } else {
       console.log(`[Order Service -> ${kafka_topic}]: new order successfuly placed: ${orderID}`);
     }
