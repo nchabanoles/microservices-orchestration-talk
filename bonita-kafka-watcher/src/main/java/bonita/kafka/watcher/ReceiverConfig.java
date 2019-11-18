@@ -37,7 +37,7 @@ public class ReceiverConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConsumerGroupId);
         // consume records already sent from the earliest
         // (instead of consuming future records only)
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
 
         return props;
     }
