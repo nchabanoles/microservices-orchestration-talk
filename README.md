@@ -20,6 +20,7 @@ There is also a pre-built adapter hiding the Apache Kafka listening logic to com
 
 ### Prerequisites
 * [Apache Kafka](https://kafka.apache.org/)
-* [Bonita](https://www.bonitasoft.com/)
+* [Bonita](https://www.bonitasoft.com/) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.bonitasoft.engine/bonita-server/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.bonitasoft.engine/bonita-server)
 * [NodeJS](https://nodejs.org/en/)
 * [Java 8+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
