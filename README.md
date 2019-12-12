@@ -13,7 +13,7 @@ As examples here are 4 sub-projects implementing an e-commerce application.
 * shipment:  
     A sample NodeJS implementation of a Shipment service. This service simulates a robotic system packing goods to be sent via post mail.
 
-There is also a pre-built adapter hiding the Apache Kafka listening logic to communicate with a Bonita application (BPMN process based app). The implementation of the Bonita application can be found in the [microservice-orchestration-bonita-order-process-example](https://github.com/nchabanoles/microservice-orchestration-bonita-order-process-example) GitHub repository.
+There is also a pre-built adapter hiding the Apache Kafka listening logic to communicate with a Bonita application (BPMN process based app). The implementation of the Bonita application can be found in the [microservice-orchestration-bonita-order-process-example](https://github.com/nchabanoles/microservice-orchestration-bonita-order-process-example) GitHub repository. As an alternative the .bos file is also available [here](https://github.com/nchabanoles/microservice-orchestration-bonita-order-process-example/releases/download/v1.0-beta/OrdersManagement-Microservices-1.0.bos). 
 ![Event-Driven Architecture with Bonita](https://github.com/nchabanoles/microservices-orchestration-talk/raw/master/pics/Event-Driven_Microservices_Bonita-e-commerce.png)
 
 ## How To Use
