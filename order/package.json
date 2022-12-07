@@ -12,7 +12,7 @@
   "author": "Nicolas Chabanoles",
   "license": "GPL",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "kafka-node": "^4.1.3",
     "nodemon": "^1.17.3"
   }
